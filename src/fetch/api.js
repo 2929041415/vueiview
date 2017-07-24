@@ -4,7 +4,7 @@ import qs from 'qs'
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
-//POST传参序列化
+/*//POST传参序列化
 axios.interceptors.request.use((config) => {
     if(config.method  === 'post'){
         config.data = qs.stringify(config.data);
@@ -22,26 +22,23 @@ axios.interceptors.response.use((res) =>{
     return res;
 }, (error) => {
     return Promise.reject(error);
-});
+});*/
 
 export function fetch(url, params) {
-    return new Promise((resolve, reject) => {
-        axios.post(url, params)
-            .then(response => {
-                resolve(response.data);
-            }, err => {
-                reject(err);
-            })
-            .catch((error) => {
-               reject(error)
-            })
-    })
+  var resultdata=null;
+  axios.post(url,params).then((response)=> {
+    resultdata=response.data;
+  }).catch((response)=> {
+    resultdata=response.data;
+  });
+  return resultdata;
 }
 
 export default {
 
+  //请求登录日志的接口
   findLoginlogInit(params) {
-        return fetch('/api/uums/loginlog/findLoginlog', params)
-    },
+        return fetch('/api/uums/loginlog/findLoginlogInit', params)
+  },
 
 }
