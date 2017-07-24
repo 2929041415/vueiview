@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Table :data="tableData1" :columns="tableColumns1" stripe></Table>
+  <div class="systemlogintable">
+    <Table :data="tableData1" :columns="tableColumns1" stripe border ></Table>
     <div style="margin: 10px;overflow: hidden">
       <div style="float: right;">
         <Page :total="total" :current="currentpage"  :show-elevator="true" :show-total="true" :show-sizer="true"  @on-change="changePage" @on-page-szie-change="choospagesize"></Page>
@@ -71,3 +71,10 @@
     }
   }
 </script>
+<style socped>
+   .systemlogintable{
+     margin-left: 150px;
+     margin-right: 150px;
+   }
+
+</style>
